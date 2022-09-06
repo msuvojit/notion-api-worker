@@ -31,8 +31,7 @@ const fetchNotionData = async <T extends any>({
     method: "POST",
     headers: {
       "content-type": "application/json",
-      "Notion-Version": "2022-02-22",
-      "Authorization": `Bearer ${notionToken}`,
+      ...(notionToken && { cookie: `token_v2=${notionToken}` }),
     },
     body: JSON.stringify(body),
   });
